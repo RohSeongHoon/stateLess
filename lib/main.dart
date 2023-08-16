@@ -17,7 +17,9 @@ class _StAppState extends State<StApp> {
   int counter = 0;
 
   void onCilcked() {
-    counter += 1;
+    setState(() {
+      counter = counter + 1;
+    });
   }
 
   @override
