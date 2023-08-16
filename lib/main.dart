@@ -14,46 +14,50 @@ class StApp extends StatefulWidget {
 }
 
 class _StAppState extends State<StApp> {
-  int counter = 0;
+  List<int> numbers = [];
 
   void onCilcked() {
-    setState(() {
-      counter = counter + 1;
-    });
+    print(numbers);
+    numbers.add(numbers.length);
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 244, 230, 187),
+      theme: ThemeData(
+        textTheme: const TextTheme(
+          titleLarge: TextStyle(
+            color: Colors.red,
+          ),
+        ),
+      ),
+      home: const Scaffold(
+        backgroundColor: Color.fromARGB(255, 244, 230, 187),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Click Counter',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                ),
-              ),
-              Text(
-                '$counter',
-                style: const TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-              IconButton(
-                iconSize: 60,
-                onPressed: onCilcked,
-                icon: const Icon(
-                  Icons.add_box_sharp,
-                ),
-              ),
+              MyLargeTitle(),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class MyLargeTitle extends StatelessWidget {
+  const MyLargeTitle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'My Large Title',
+      style: TextStyle(
+        fontSize: 30,
+        color: Theme.of(context).textTheme.titleLarge?.color,
       ),
     );
   }
