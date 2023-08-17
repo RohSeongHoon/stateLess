@@ -1,66 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:toonflix/widgets/Button.dart';
-import 'package:toonflix/widgets/currency-card.dart';
+import 'package:toonflix/screens/home_screen.dart';
 
 void main() {
-  runApp(const StApp());
-}
-
-class StApp extends StatefulWidget {
-  const StApp({super.key});
-
-  @override
-  State<StApp> createState() => _StAppState();
-}
-
-class _StAppState extends State<StApp> {
-  List<int> numbers = [];
-
-  void onCilcked() {
-    print(numbers);
-    numbers.add(numbers.length);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        textTheme: const TextTheme(
-          titleLarge: TextStyle(
-            color: Colors.red,
-          ),
-        ),
-      ),
-      home: const Scaffold(
-        backgroundColor: Color.fromARGB(255, 244, 230, 187),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              MyLargeTitle(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyLargeTitle extends StatelessWidget {
-  const MyLargeTitle({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'My Large Title',
-      style: TextStyle(
-        fontSize: 30,
-        color: Theme.of(context).textTheme.titleLarge?.color,
-      ),
-    );
-  }
+  runApp(const App());
 }
 
 class App extends StatelessWidget {
@@ -69,139 +11,19 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: const Color(0xFF181818),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 80,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        const Text(
-                          'hey, 성훈',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 28,
-                              fontWeight: FontWeight.w800),
-                        ),
-                        Text(
-                          'Welcome back',
-                          style: TextStyle(
-                            color: Colors.white.withOpacity(0.8),
-                            fontSize: 18,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 70,
-                ),
-                Text(
-                  'Total balance',
-                  style: TextStyle(
-                    fontSize: 22,
-                    color: Colors.white.withOpacity(0.8),
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                const Text(
-                  '\$5 194 484',
-                  style: TextStyle(
-                    fontSize: 48,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                const Row(
-                  children: [
-                    Button(
-                      bgColor: Colors.amber,
-                      text: 'Transfer',
-                      frontColor: Colors.black,
-                    ),
-                    Button(
-                      bgColor: Color(0xFF1F2123),
-                      text: 'Request',
-                      frontColor: Colors.white,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 100,
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Wallets',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 36,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    Text(
-                      "View All",
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white.withOpacity(0.8),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const CurrencyCard(
-                  name: 'Euro',
-                  code: 'EUR',
-                  amount: '6 428',
-                  icon: Icons.euro_rounded,
-                  isInverted: false,
-                ),
-                Transform.translate(
-                  offset: const Offset(0, -20),
-                  child: const CurrencyCard(
-                    name: 'Bitcoin',
-                    code: 'BTC',
-                    amount: '9 873',
-                    icon: Icons.currency_bitcoin_outlined,
-                    isInverted: true,
-                  ),
-                ),
-                Transform.translate(
-                  offset: const Offset(0, -40),
-                  child: const CurrencyCard(
-                    name: 'Dollar',
-                    code: 'USD',
-                    amount: '6 124',
-                    icon: Icons.attach_money_rounded,
-                    isInverted: false,
-                  ),
-                ),
-              ],
-            ),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch(
+          backgroundColor: const Color(0xFFE7626C),
+        ),
+        textTheme: const TextTheme(
+          displayLarge: TextStyle(
+            color: Color(0xFF232B55),
           ),
         ),
+        cardColor: const Color(0xFFF4EDDB),
+      ),
+      home: const Scaffold(
+        body: HomeScreen(),
       ),
     );
   }
